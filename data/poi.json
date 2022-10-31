@@ -1,0 +1,41 @@
+{
+    "content": "Locations",
+     "names": [
+        {
+            "poi_name": "Greasy Grove",
+            "type": "Restaurants",
+            "description": "Greasy Grove is a fast food restaurant that serves pastries and burger meals."
+        },
+
+        {
+            "poi_name": "Midgaard",
+            "type": "Pub/Bar",
+            "description": "Midgaard is a pub that serves customers beers, cocktails and soft drinks with background music to set the mood."
+        },
+    
+        {
+            "poi_name": "Verdansk",
+            "type": "Pub/Bar",
+            "description": "Verdansk is a pub that serves customers beers, cocktails and soft drinks with a large dancefloor for customers to enjoy special events."
+        },
+    
+        {
+            "poi_name": "Pleasant Pack",
+            "type": "Historical site",
+            "description": "Pleasant Park is an historical landmark with several status of historical figures of the city."
+        },
+    
+        {
+            "poi_name": "Lazy Link",
+            "type": "Cafe",
+            "description": "Lazy Link is a coffee shop that serves different types of coffees, hot chocolate and tea."
+        },
+    
+        {
+            "poi_name": "Shaman Place",
+            "type": "Restaurants",
+            "description": "Shaman Place is a restaurant the serves mainly international dishes which includes: Indian, Italian and South African cuisine."
+        }
+     ]
+}
+
