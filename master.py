@@ -29,7 +29,7 @@ def view_poi():
             print(" ")
             print(f"Index Number {index}")
             print(f"Name of POI: {poi_name}")
-            print("n\n")
+            print("\n")
             index = index + 1
 
 def search():
@@ -48,7 +48,7 @@ def add_poi():
         
     new_poi["name"] = input("Name of poi: ")
     new_poi["type"] = input("Type of poi: ")
-    new_poi["description"] = input("Description of poi: ")
+    new_poi["description"] = input("POI Description: ")
     new_data.append(new_poi)
     with open(file_name, "w") as poi_file:
         json.dump(new_data, poi_file, indent=4)
@@ -63,11 +63,10 @@ def delete_poi():
         
     print("Select POI index Number to delete")
     
-    del_option = input(f"Select a number 0 to {data_length}: ")
+    del_option = input(f"Select a number between 0 to {data_length}: ")
     index = 0
     for entry in data:
         if index == int(del_option):
-            pass
             index = index + 1
         else:
             new_data.append(entry)
