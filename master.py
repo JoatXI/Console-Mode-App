@@ -26,6 +26,8 @@ def view_poi():
         for entry in data:
             poi_name = entry["poi_name"]
             
+            print(" ")
+            print(f"Index Number {index}")
             print(f"Name of POI: {poi_name}")
             print("n\n")
             index = index + 1
@@ -61,7 +63,7 @@ def delete_poi():
         
     print("Select POI index Number to delete")
     
-    del_option = input(f"Select a number 0 -{data_length}")
+    del_option = input(f"Select a number 0 to {data_length}: ")
     index = 0
     for entry in data:
         if index == int(del_option):
