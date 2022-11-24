@@ -2,31 +2,37 @@
     {
     "poi_name": "Greasy Grove",
     "poi_type": "Restaurant",
-    "poi_description": "Greasy Grove is a fast food restaurant that serves pastries and burger meals."
+    "poi_description": "Greasy Grove is a fast food restaurant that serves pastries and burger meals.",
+    "poi_content": "Juju"
     },
     {
     "poi_name": "Midgaard",
     "poi_type": "Pub/Bar",
-    "poi_description": "Midgaard is a pub that serves customers beers, cocktails and soft drinks with background music to set the mood."
+    "poi_description": "Midgaard is a pub that serves customers beers, cocktails and soft drinks with background music to set the mood.",
+    "poi_content": "Ogogoro"
     },
     {
     "poi_name": "Shaman Place",
     "poi_type": "Restaurant",
-    "poi_description": "Shaman Place is a restaurant the serves mainly international dishes which includes: Indian, Italian and South African cuisine."
+    "poi_description": "Shaman Place is a restaurant the serves mainly international dishes which includes: Indian, Italian and South African cuisine.",
+    "poi_content": "Eba"
     },
     {
     "poi_name": "Lazy Links",
     "poi_type": "Cafe",
-    "poi_description": "Lazy Link is a coffee shop that serves different types of coffees, hot chocolate and tea."
+    "poi_description": "Lazy Link is a coffee shop that serves different types of coffees, hot chocolate and tea.",
+    "poi_content": "Kunu"
     },
     {
     "poi_name": "Pleasant Park",
     "poi_type": "Historical Site",
-    "poi_description": "Pleasant Park is an historical landmark with several status of historical figures of the city."
+    "poi_description": "Pleasant Park is an historical landmark with several status of historical figures of the city.",
+    "poi_content": "Sculpture"
     },
     {
     "poi_name": "Verdansk",
     "poi_type": "Pub/Bar",
-    "poi_description": "Verdansk is a pub that serves customers beers, cocktails and soft drinks with a large dancefloor for customers to enjoy special events."
+    "poi_description": "Verdansk is a pub that serves customers beers, cocktails and soft drinks with a large dancefloor for customers to enjoy special events.",
+    "poi_content": "Palm wine"
     }
 ]

@@ -15,7 +15,9 @@ def options_menu():
     print(" ")
     print("(4) Delete POI")
     print(" ")
-    print("(5) Exit")
+    print("(5) POI Enquiry")
+    print(" ")
+    print("(6) Exit")
     print(" ")
     
 def view_poi():
@@ -32,7 +34,7 @@ def view_poi():
             print("\n")
             index = index + 1
 
-def search():
+def poi_search():
     with open(file_name, "r") as poi_file:
         data = json.load(poi_file)
         
@@ -63,7 +65,7 @@ def delete_poi():
         
     print("Select POI index Number to delete")
     
-    del_option = input(f"Select a number between 0 to {data_length}: ")
+    del_option = input(f"Select a number between 0 and {data_length}: ")
     index = 0
     for entry in data:
         if index == int(del_option):
@@ -74,6 +76,24 @@ def delete_poi():
     with open(file_name, "w") as poi_file:
         json.dump(new_data, poi_file, indent=4)
         
+def poi_enquiry():
+    with open(file_name, "r") as poi_file:
+        data = json.load(poi_file)
+        
+        for entry in data:
+            entry["poi_name"] = input("Which POI do you want to make an enquiry: ")
+            print(f"\nState your enquiry")
+            poi_content = entry["poi_content"]
+            
+            user_enquiry = input("Enter enquiry: ")
+            request = ["vegan", "beverage", "close", "alcohol", "gluten"]
+        
+            if user_enquiry in request:
+                print(poi_content)
+            else:
+                print("Sorry we do not offer this request")
+            break
+        
         
 while True:
     options_menu()
@@ -81,12 +101,14 @@ while True:
     if option == "1":
         view_poi()
     elif option == "2":
-        search()
+        poi_search()
     elif option == "3":
         add_poi()
     elif option == "4":
         delete_poi()
     elif option == "5":
+        poi_enquiry()
+    elif option == "6":
         break
     else:
         print("Unknown option, You did not enter a number")
