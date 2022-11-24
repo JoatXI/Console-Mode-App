@@ -3,7 +3,7 @@ file_name = "./data/poi.json"
 
 def options_menu():
     print(" ")
-    print("Points Of Interest(POIs")
+    print("Points Of Interest(POIs)")
     print(" ")
     print("Select Option:")
     print(" ")
@@ -37,9 +37,9 @@ def search():
         data = json.load(poi_file)
         
         for entry in data:
-            poi_name = entry[input("Enter POI name: ")]
-            if poi_name == data["name"]:
-                print(entry)
+            entry["poi_name"] = input("Enter POI name: ")
+            print(entry)
+            break
 
 def add_poi():
     new_poi = {}
