@@ -38,10 +38,27 @@ def poi_search():
     with open(file_name, "r") as poi_file:
         data = json.load(poi_file)
         
+        user_search = input("Enter POI name: ")
         for entry in data:
-            entry["poi_name"] = input("Enter POI name: ")
-            print(entry)
-            break
+            if "poi_name" == entry["poi_name"]:
+                return True
+    if user_search == "Verdansk":
+        print(data[5])
+    elif user_search == "Greasy Grove":
+        print(data[0])
+    elif user_search == "Midgaard":
+        print(data[1])
+    elif user_search == "Shaman Place":
+        print(data[2])
+    elif user_search == "Lazy Links":
+        print(data[3])
+    elif user_search == "Pleasant Park":
+        print(data[4])
+    else:
+        print(" ")
+        print("POI Not Found")
+                
+                
 
 def add_poi():
     new_poi = {}
