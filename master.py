@@ -94,16 +94,21 @@ def poi_enquiry():
         for entry in data:
             entry["poi_name"] = input("Which POI do you want to make an enquiry: ")
             print(f"\nState your enquiry")
-            poi_content = entry["poi_content"]
             
             user_enquiry = input("Enter enquiry: ")
             request = ["vegan", "beverage", "close", "alcohol", "gluten"]
-        
-            if user_enquiry in request:
-                print(poi_content)
-            else:
-                print("Sorry we do not offer this request")
-            break
+            
+            for entry in request:
+                poi_name = entry["poi_name"]
+                poi_type = entry["poi_type"]
+                poi_description = entry["poi_description"]
+                if user_enquiry in request:
+                    print(poi_name)
+                    print(poi_type)
+                    print(poi_description)
+                else:
+                    print("Sorry we do not offer this request")
+                break
         
         
 while True:
