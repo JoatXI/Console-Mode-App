@@ -2,23 +2,14 @@ import json
 file_name = "./data/poi.json"
 
 def options_menu():
-    print(" ")
-    print("Points Of Interest(POIs)")
-    print(" ")
-    print("Select Option:")
-    print(" ")
-    print("(1) View POIs")
-    print(" ")
-    print("(2) POI Search")
-    print(" ")
-    print("(3) Add POI")
-    print(" ")
-    print("(4) Delete POI")
-    print(" ")
-    print("(5) POI Enquiry")
-    print(" ")
-    print("(6) Exit")
-    print(" ")
+    print("\nPoints Of Interest(POIs)")
+    print("\nSelect Option:")
+    print("\n(1) View POIs")
+    print("\n(2) POI Search")
+    print("\n(3) Add POI")
+    print("\n(4) Delete POI")
+    print("\n(5) POI Enquiry")
+    print("\n(6) Exit")
     
 def view_poi():
     with open(file_name, "r") as poi_file:
@@ -28,8 +19,7 @@ def view_poi():
         for entry in data:
             poi_name = entry["poi_name"]
             
-            print(" ")
-            print(f"Index Number {index}")
+            print(f"\nIndex Number {index}")
             print(f"Name of POI: {poi_name}")
             print("\n")
             index = index + 1
@@ -37,23 +27,21 @@ def view_poi():
 def poi_search():
     with open(file_name, "r") as poi_file:
         data = json.load(poi_file)
+        user_search = input("Enter POI name to search: ")
         
-    start = 0
-    end = len(data) - 1
-    user_search = input("Enter POI name to search: ")
-    
-    while start <= end:
-        middle = (start + end)// 2
-        midpoint = data[middle]
-        if midpoint > user_search:
-            end = middle - 1
-        elif midpoint < user_search:
-            start = middle + 1
-        else:
-            return midpoint
-        
-        data.sort()
-                            
+        for entry in data:        
+            poi_name = entry["poi_name"]
+            poi_type = entry["poi_type"]
+            poi_description = entry["poi_description"]
+            
+            if user_search in poi_name:
+                print(f"\nSearch result:")
+                print(f"\n{poi_name}, {poi_type}")
+                print(f"\n{poi_description}")
+            else:
+                print(f"\nPOI Not Found")
+            break
+                                   
 def add_poi():
     new_poi = {}
     with open(file_name, "r") as poi_file:
@@ -76,7 +64,7 @@ def delete_poi():
         
     print("Select POI index Number to delete")
     
-    del_option = input(f"Select a number between 0 and {data_length}: ")
+    del_option = input(f"Choose a number between 0 and {data_length}: ")
     index = 0
     for entry in data:
         if index == int(del_option):
@@ -92,7 +80,7 @@ def poi_enquiry():
         data = json.load(poi_file)
         
         for entry in data:
-            entry["poi_name"] = input("Which POI do you want to make an enquiry: ")
+            entry["poi_name"] = input("Name of POI to make enquiry: ")
             print(f"\nState your enquiry")
             
             user_enquiry = input("Enter enquiry: ")
