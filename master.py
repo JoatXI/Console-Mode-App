@@ -10,7 +10,8 @@ def options_menu():
     print("\n(3) Add POI")
     print("\n(4) Delete POI")
     print("\n(5) POI Enquiry")
-    print("\n(6) Exit")
+    print("\n(6) Answer Enquiries")
+    print("\n(7) Exit")
     
 def view_poi():
     poi_sorting("poi_name")
@@ -80,9 +81,9 @@ def poi_enquiry():
     with open(file_name, "r") as poi_file:
         data = json.load(poi_file)
         
-        location_name = input("\nName of POI to make enquiry: ")
+        poi_name = input("\nName of POI to make enquiry: ")
         for entry in data:
-            if location_name in entry.values():
+            if poi_name in entry.values():
                 print(f"\nState Your Enquiry:")
                 
                 faq1 = "(1) What types of beverages does you offer"
@@ -98,21 +99,40 @@ def poi_enquiry():
                 request = input("\nEnter request number: ")
                 if request == "1":
                     print("\nEnquiry Recieved")
-                    return faq1
+                    enquiry_data.append(poi_name)
+                    enquiry_data.append(faq1)
                 elif request == "2":
                     print("\nEnquiry Recieved")
-                    return faq2
+                    enquiry_data.append(poi_name)
+                    enquiry_data.append(faq2)
                 elif request == "3":
                     print("\nEnquiry Recieved")
-                    return faq3
+                    enquiry_data.append(poi_name)
+                    enquiry_data.append(faq3)
                 elif request == "4":
                     print("\nEnquiry Recieved")
-                    return faq4
+                    enquiry_data.append(poi_name)
+                    enquiry_data.append(faq4)
                 else:
                     print("\nUnknown Request")
-                    enquiry_data.append(entry)
-        with open(text_file, "w") as f:
-            f.write(enquiry_data)
+
+        with open(text_file, "a+") as enquiry_file:
+            enquiry_file.seek(0)
+            data = enquiry_file.read(100)
+            
+            if len(data) > 0:
+                enquiry_file.write("\n")
+            enquiry_file.writelines(str(enquiry_data))
+            
+def answer_enquiry():
+    with open(text_file, "r") as enquiry_file:
+        data = enquiry_file.readlines()
+        i = 1
+        
+        for line in data:
+            print(f"\nEnuiry Number: {i}")
+            print(line)
+            i = i + 1
                     
                     
 def poi_sorting(key):
@@ -141,6 +161,8 @@ while True:
     elif option == "5":
         poi_enquiry()
     elif option == "6":
+        answer_enquiry()
+    elif option == "7":
         break
     else:
         print("Unknown option, You did not enter a number")
