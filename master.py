@@ -1,5 +1,6 @@
 import json
 file_name = "./data/poi.json"
+text_file = "./data/enquiry.txt"
 
 def options_menu():
     print("\nPoints Of Interest(POIs)")
@@ -74,6 +75,8 @@ def delete_poi():
         
 def poi_enquiry():
     view_poi()
+    enquiry_data = []
+    
     with open(file_name, "r") as poi_file:
         data = json.load(poi_file)
         
@@ -82,26 +85,35 @@ def poi_enquiry():
             if location_name in entry.values():
                 print(f"\nState Your Enquiry:")
                 
-                print(f"\n(1) What types of beverages does you offer")
-                print(f"\n(2) Does your restaurant offer vegan or gluten-free food?")
-                print(f"\n(3) What are your open/close time?")
-                print(f"\n(4) Does Pub/Bar offer non-alcoholic drinks?")
+                faq1 = "(1) What types of beverages does you offer"
+                faq2 = "(2) Does your restaurant offer vegan or gluten-free food?"
+                faq3 = "(3) What are your open/close time?"
+                faq4 = "(4) Does Pub/Bar offer non-alcoholic drinks?"
+                
+                print(f"\n{faq1}")
+                print(f"\n{faq2}")
+                print(f"\n{faq3}")
+                print(f"\n{faq4}")
             
                 request = input("\nEnter request number: ")
                 if request == "1":
                     print("\nEnquiry Recieved")
-                    return (f"What types of beverages does you offer")
+                    return faq1
                 elif request == "2":
                     print("\nEnquiry Recieved")
-                    return (f"Does your restaurant offer vegan or gluten-free food?")
+                    return faq2
                 elif request == "3":
                     print("\nEnquiry Recieved")
-                    return (f"What are your open/close time?")
+                    return faq3
                 elif request == "4":
                     print("\nEnquiry Recieved")
-                    return (f"Does Pub/Bar offer non-alcoholic drinks?")
+                    return faq4
                 else:
                     print("\nUnknown Request")
+                    enquiry_data.append(entry)
+        with open(text_file, "w") as f:
+            f.write(enquiry_data)
+                    
                     
 def poi_sorting(key):
     with open(file_name, "r") as poi_file:
