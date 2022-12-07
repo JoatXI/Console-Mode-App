@@ -12,6 +12,7 @@ def options_menu():
     print("\n(6) Exit")
     
 def view_poi():
+    poi_sorting("poi_name")
     with open(file_name, "r") as poi_file:
         data = json.load(poi_file)
         index = 0
@@ -19,7 +20,7 @@ def view_poi():
         for entry in data:
             poi_name = entry["poi_name"]
             
-            print(f"\nIndex Number {index}")
+            print(f"\nIndex Number: {index}")
             print(f"Name of POI: {poi_name}")
             print("\n")
             index = index + 1
@@ -28,19 +29,15 @@ def poi_search():
     with open(file_name, "r") as poi_file:
         data = json.load(poi_file)
         
-        user_search = input("Enter POI name to search: ")
-        for entry in data:        
+        for entry in data:
             poi_name = entry["poi_name"]
-            poi_type = entry["poi_type"]
-            poi_description = entry["poi_description"]
             
-            if user_search in entry.values():
-                print(f"\nSearch result:")
-                print(f"\n{poi_name}, {poi_type}")
-                print(f"\n{poi_description}")
+            user_search = input("Enter POI name to search: ")
+            if user_search in entry:
+                print(f"\n{poi_name}")
             else:
-                print(f"\nPOI Not Found")
-            break
+                print("POI Not Found")
+                
                                    
 def add_poi():
     new_poi = {}
@@ -85,26 +82,38 @@ def poi_enquiry():
             if location_name in entry.values():
                 print(f"\nState Your Enquiry:")
                 
-                print(f"\n(1) What type of beverages does your offer")
+                print(f"\n(1) What types of beverages does you offer")
                 print(f"\n(2) Does your restaurant offer vegan or gluten-free food?")
-                print(f"\n(3) What are your open/close? time")
+                print(f"\n(3) What are your open/close time?")
                 print(f"\n(4) Does Pub/Bar offer non-alcoholic drinks?")
             
                 request = input("\nEnter request number: ")
                 if request == "1":
                     print("\nEnquiry Recieved")
-                    return (f"What type of beverages does your offer")
+                    return (f"What types of beverages does you offer")
                 elif request == "2":
                     print("\nEnquiry Recieved")
                     return (f"Does your restaurant offer vegan or gluten-free food?")
                 elif request == "3":
                     print("\nEnquiry Recieved")
-                    return (f"What are your open/close? time")
+                    return (f"What are your open/close time?")
                 elif request == "4":
                     print("\nEnquiry Recieved")
                     return (f"Does Pub/Bar offer non-alcoholic drinks?")
                 else:
                     print("\nUnknown Request")
+                    
+def poi_sorting(key):
+    with open(file_name, "r") as poi_file:
+        data = json.load(poi_file)
+        
+        for i in range(len(data) - 1, 0, -1):
+            for j in range(i):
+                if data[j][key] > data[j + 1][key]:
+                    temp = data[j]
+                    data[j] = data[j + 1]
+                    data[j + 1] = temp
+        return data
         
 while True:
     options_menu()
