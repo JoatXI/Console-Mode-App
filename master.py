@@ -14,7 +14,7 @@ def options_menu():
     print("\n(7) Exit")
     
 def view_poi():
-    poi_sorting("poi_name")
+    poi_sorting()
     with open(file_name, "r") as poi_file:
         data = json.load(poi_file)
         index = 0
@@ -137,17 +137,25 @@ def answer_enquiry():
             i = i + 1
                     
                     
-def poi_sorting(key):
+def poi_sorting():
     with open(file_name, "r") as poi_file:
         data = json.load(poi_file)
+        data.values()
         
-        for i in range(len(data) - 1, 0, -1):
-            for j in range(i):
-                if data[j][key] > data[j + 1][key]:
-                    temp = data[j]
-                    data[j] = data[j + 1]
-                    data[j + 1] = temp
-        return data
+        #for i in range(len(data) - 1, 0, -1):
+         #   for j in range(i):
+          #      if data[j][key] > data[j + 1][key]:
+           #         temp = data[j]
+            #        data[j] = data[j + 1]
+             #       data[j + 1] = temp
+        #return data
+        
+        for i in range(0, len(data)):
+            for j in range(0, len(data)):
+                if data[j] > data[i]:
+                    temp = data[i]
+                    data[i] = data[j]
+                    data[j] = temp
         
 while True:
     options_menu()
