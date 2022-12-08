@@ -30,16 +30,18 @@ def view_poi():
 def poi_search():
     with open(file_name, "r") as poi_file:
         data = json.load(poi_file)
-        
-        for entry in data:
-            poi_name = entry["poi_name"]
+        user_search = input("Enter POI name to search: ")
+        index = 0
+
+        for i in data:
+            poi_name = i["poi_name"]
+            poi_type = i["poi_type"]
+            poi_description = i["poi_description"]
             
-            user_search = input("Enter POI name to search: ")
-            if user_search in entry:
-                print(f"\n{poi_name}")
-            else:
-                print("POI Not Found")
-                
+            if user_search == poi_name:
+                print(f"{poi_name}, {poi_type}")
+                print(f"\n{poi_description}")
+                index = index + 1
                                    
 def add_poi():
     new_poi = {}
