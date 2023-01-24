@@ -47,9 +47,9 @@ def add_poi():
     with open(file_name, "r") as poi_file:
         new_data = json.load(poi_file)
         
-    new_poi["name"] = input("Name of poi: ")
-    new_poi["type"] = input("Type of poi: ")
-    new_poi["description"] = input("POI Description: ")
+    new_poi["poi_name"] = input("Name of poi: ")
+    new_poi["poi_type"] = input("Type of poi: ")
+    new_poi["poi_description"] = input("POI Description: ")
     new_data.append(new_poi)
     with open(file_name, "w") as poi_file:
         json.dump(new_data, poi_file, indent=4)
